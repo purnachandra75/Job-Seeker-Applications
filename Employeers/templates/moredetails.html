@@ -1,0 +1,44 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+
+{% for d in data %}
+        {% for info in d.personal_info %}
+        <p>Name: {{ info.Name }}</p>
+        <p>Email: {{ info.Email }}</p>
+        <p>Phone: {{ info.Phone_no }}</p>
+    {% endfor %}
+    {%for info in d.education_info %}
+    <p><strong>Degree:</strong> {{ info.Degree }}</p>
+    <p><strong>Institute Name:</strong> {{ info.Institute_name }}</p>
+    <p><strong>Start Date:</strong> {{ info.StartDate }}</p>
+    <p><strong>End Date:</strong> {{ info.EndDate }}</p>
+    {% endfor %}
+    {% for info in d.skills_info%}
+        <p><strong>Skill Name:</strong> {{ info.Skillname }}</p>
+        <p><strong>Proficiency:</strong> {{ info.Proficiency }}</p>
+        <p><strong>Years of Experience:</strong> {{ info.YearofExperiance }}</p>
+    
+    {% endfor %}
+    {% for info in d.languages_info%}
+    <p><strong>Language Name:</strong> {{ info.LanguageName }}</p>
+    <p><strong>Proficiency:</strong> {{ info.Proficiency }}</p>
+    <p><strong>Can Read:</strong> {{ info.Can_Read }}</p>
+    <p><strong>Can Speak:</strong> {{ info.Can_Speak }}</p>
+    <p><strong>Can Write:</strong> {{ info.Can_Write }}</p>
+    {% endfor %}
+    {% for info in d.workexp_info%}
+    <p><strong>Title:</strong> {{ info.Title }}</p>
+    <p><strong>Project Name:</strong> {{ info.Project_name }}</p>
+    <p><strong>Company Name:</strong> {{ info.Company_name }}</p>
+    <p><strong>Technology:</strong> {{ info.Technology }}</p>
+    <p><strong>Start Date:</strong> {{ info.StartDate }}</p>
+    <p><strong>End Date:</strong> {{ info.EndDate }}</p>
+    {% endfor %}
+   {% endfor %}
+
+        
+{% endblock %}

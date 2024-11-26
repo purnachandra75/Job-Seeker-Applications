@@ -1,0 +1,77 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+
+
+
+<h1>User Profile</h1>
+<p><strong>Name:</strong> {{ personalinfo.Name }}</p>
+<p><strong>Email:</strong> {{ personalinfo.Email }}</p>
+<p><strong>Phone:</strong> {{ personalinfo.Phone_no }}</p>
+
+<br/>
+
+<h3>Education:</h3><br/>
+<div style="margin: 30px; border:1px solid black;padding:10px">
+
+{% for e in eduinfo %}
+    <p><strong>Degree:</strong> {{ e.Degree }}</p>
+    <p><strong>Institute Name:</strong> {{ e.Institute_name }}</p>
+    <p><strong>Start Date:</strong> {{ e.StartDate }}</p>
+    <p><strong>End Date:</strong> {{ e.EndDate }}</p>
+    <br/>
+{% endfor %}
+</div>
+
+
+<div>
+    <h3>Languages:</h3><br/>
+    <div style="margin: 30px; border:1px solid black;padding:10px">
+
+    {% for l in lang %}
+        <p><strong>Language Name:</strong> {{ l.LanguageName }}</p>
+        <p><strong>Proficiency:</strong> {{ l.Proficiency }}</p>
+        <p><strong>Can Read:</strong> {{ l.Can_Read }}</p>
+        <p><strong>Can Speak:</strong> {{ l.Can_Speak }}</p>
+        <p><strong>Can Write:</strong> {{ l.Can_Write }}</p>
+        <br/>
+    {% endfor %}
+    </div>
+    
+</div>
+
+<h3>Work Experience:</h3>
+<div style="margin: 30px; border:1px solid black;padding:10px">
+    {% for w in workexp %}
+        <p><strong>Title:</strong> {{ w.Title }}</p>
+        <p><strong>Project Name:</strong> {{ w.Project_name }}</p>
+        <p><strong>Company Name:</strong> {{ w.Company_name }}</p>
+        <p><strong>Technology:</strong> {{ w.Technology }}</p>
+        <p><strong>Start Date:</strong> {{ w.StartDate }}</p>
+        <p><strong>End Date:</strong> {{ w.EndDate }}</p>
+        <br/>
+    {% endfor %}
+    
+</div>
+
+
+    <h3>Skills</h3>
+    <div style="margin: 30px; border:1px solid black;padding:10px">
+
+    {% for s in skills %}
+        <p><strong>Skill Name:</strong> {{ s.Skillname }}</p>
+        <p><strong>Proficiency:</strong> {{ s.Proficiency }}</p>
+        <p><strong>Years of Experience:</strong> {{ s.YearofExperiance }}</p>
+        <br/>
+        
+    {% endfor %}
+  
+    
+</div>
+
+
+        
+{% endblock %}

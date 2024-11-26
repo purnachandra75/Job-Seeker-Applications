@@ -1,0 +1,15 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+Full_name: {{somedata.full_name}}<br/>
+Email:{{somedata.email}}<br/>
+ Phone_number:{{somedata.phone_number}}<br/>
+ company_name:{{somedata.company_name}}<br/>
+ industry:{{somedata.industry}}<br/>
+ description:{{somedata.description}}<br/>
+
+ <a href="{% url 'updateempprofile' %}">update profile</a>
+{% endblock %}

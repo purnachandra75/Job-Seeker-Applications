@@ -1,0 +1,17 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+
+{% for job in object_list %}
+    {{job.Name}}<br/>
+    {{job.Email}}<br/>
+    {{job.Phone_no}}<br/>
+    {{job.Addres}}<br/><br/>
+    <a href="{% url 'aboutjobseeker' job.id %}">more details</a><br/><br/>
+{% endfor %}
+
+        
+{% endblock %}

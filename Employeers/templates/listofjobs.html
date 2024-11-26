@@ -1,0 +1,23 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+
+{% for job in listofjobs %}
+<div style="border: 1px black solid;">
+<strong>Job Title:</strong> {{ job.title }}<br/>
+<strong>Description:</strong> {{ job.description }}<br/>
+<strong>Job Type:</strong> {{ job.job_type }}<br/>
+<strong>Minimum Salary:</strong> {{ job.salary_min }}<br/>
+<strong>Maximum Salary:</strong> {{ job.salary_max }}<br/>
+<strong>Location:</strong> {{ job.location }}<br/>
+<strong>Required Skills:</strong> {{ job.required_skills }}<br/>
+<strong>Years of Experience:</strong> {{ job.experience }}<br/><br/>
+<a href="{% url 'listofapplicants' job.id %}">list of Applicants</a><br/>
+</div>
+
+{% endfor %}
+        
+{% endblock %}
