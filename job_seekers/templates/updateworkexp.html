@@ -1,0 +1,40 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+
+
+    {% for w in w_data %}
+        <p><strong>Title:</strong> {{ w.Title }}</p>
+        <p><strong>Project Name:</strong> {{ w.Project_name }}</p>
+        <p><strong>Company Name:</strong> {{ w.Company_name }}</p>
+        <p><strong>Technology:</strong> {{ w.Technology }}</p>
+        <p><strong>Start Date:</strong> {{ w.StartDate }}</p>
+        <p><strong>End Date:</strong> {{ w.EndDate }}</p>
+        <a href="{% url 'deleteworkExp' w.id %}">delete</a>
+        <a href="{% url 'updatenewWorkExp' w.id w.User_id %}">update</a><Br/>
+
+        <br/>
+    {% endfor %}
+    
+
+<a href="{% url 'addworkexp'  %}">add</a>
+{% if msg == 'update' %}
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <button>update</button>
+</form> 
+{% endif %}
+
+{% if msg == 'add' %}
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <button >add</button>
+</form>
+
+{% endif %}       
+{% endblock %}

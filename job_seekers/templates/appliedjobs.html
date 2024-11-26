@@ -1,0 +1,32 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+
+{% if data|length == 0 %}
+    <h1>There are no applicants</h1>
+{% endif %}
+
+
+{%for joblist in data%}
+<div style="margin: 30px; border:1px solid black;padding:10px">
+
+    
+    {%for job in joblist%}
+        <strong>Job Title:</strong> {{ job.title }}<br/>
+        <strong>Description:</strong> {{ job.description }}<br/>
+        <strong>Job Type:</strong> {{ job.job_type }}<br/>
+        <strong>Minimum Salary:</strong> {{ job.salary_min }}<br/>
+        <strong>Maximum Salary:</strong> {{ job.salary_max }}<br/>
+        <strong>Location:</strong> {{ job.location }}<br/>
+        <strong>Required Skills:</strong> {{ job.required_skills }}<br/>
+        <strong>Years of Experience:</strong> {{ job.experience }}<br/><br/>
+    {% endfor%}
+</div>
+{%endfor%}
+
+
+        
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+
+{% for l in l_data %}
+    <p><strong>Language Name:</strong> {{ l.LanguageName }}</p>
+    <p><strong>Proficiency:</strong> {{ l.Proficiency }}</p>
+    <p><strong>Can Read:</strong> {{ l.Can_Read }}</p>
+    <p><strong>Can Speak:</strong> {{ l.Can_Speak }}</p>
+    <p><strong>Can Write:</strong> {{ l.Can_Write }}</p>
+    <a href="{% url 'deletelang' l.id %}">delete</a>
+    <a href="{% url 'updatenewlang' l.id l.User_id %}">update</a>
+
+{% endfor %}
+<a href="{% url 'addlang' %}">add</a>
+
+{% if msg == 'update' %}
+<form method="post">
+    {% csrf_token %}
+    {{ form}}
+    <button>update</button>
+</form> 
+{% endif %}
+
+{% if msg == 'add' %}
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <button >add</button>
+</form>
+
+{% endif %}       
+{% endblock %}

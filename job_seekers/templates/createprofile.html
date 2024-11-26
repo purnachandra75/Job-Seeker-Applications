@@ -1,0 +1,25 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+
+{% csrf_token %}
+    <form method='post'style="text-align: center;">
+        {% csrf_token %}
+        {{pform}}
+        <br/>
+        {{eform}}
+        <br/>
+        {{wform}}
+        <br/>
+        {{sform}}
+        <br/>
+        {{lform}}
+
+        <button>submit</button>
+    </form>
+    
+        
+{% endblock %}

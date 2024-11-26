@@ -1,0 +1,33 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+{% for e in e_data %}
+        <p><strong>Degree:</strong> {{ e.Degree}}</p>
+        <p><strong>Institute_name:</strong> {{ e.Institute_name }}</p>
+        <p><strong>StartDate:</strong> {{ e.StartDate }}</p>
+        <p><strong>EndDate:</strong> {{ e.EndDate }}</p>
+        <a href="{% url 'update' e.id e.User_id %}">update</a>
+        <a href="{% url 'delete' e.id %}">delete</a>
+        <a href="{% url 'add' e.User_id %}">add</a>
+        <br/>
+{% endfor %}
+{% if msg == 'update' %}
+<form method="post">
+    {% csrf_token %}
+    {{ form}}
+    <button>update</button>
+</form> 
+{% endif %}
+
+{% if msg == 'add' %}
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <button >add</button>
+</form>
+
+{% endif %}       
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}
+Welcome
+{% endblock %}
+
+{% block content %}
+    <div>
+    <h1>User Profile</h1>
+    <p><strong>Name:</strong> {{ p_data.Name }}</p>
+    <p><strong>Email:</strong> {{ p_data.Email }}</p>
+    <p><strong>Phone:</strong> {{ p_data.Phone_no }}</p>
+    <br/>
+    </div>
+    <h3>Education:</h3><br/>
+    <div style="margin: 30px; border:1px solid black;padding:10px">
+    
+    {% for e in e_data %}
+        <p><strong>Degree:</strong> {{ e.Degree }}</p>
+        <p><strong>Institute Name:</strong> {{ e.Institute_name }}</p>
+        <p><strong>Start Date:</strong> {{ e.StartDate }}</p>
+        <p><strong>End Date:</strong> {{ e.EndDate }}</p>
+        <br/>
+    {% endfor %}
+    <a href="{% url 'updateEducation' p_data.id %}">Edit Education</a>
+</div>
+    <div>
+        <h3>Languages:</h3><br/>
+        
+        {% for l in l_data %}
+        <div style="margin: 30px; border:1px solid black;padding:10px">
+            <p><strong>Language Name:</strong> {{ l.LanguageName }}</p>
+            <p><strong>Proficiency:</strong> {{ l.Proficiency }}</p>
+            <p><strong>Can Read:</strong> {{ l.Can_Read }}</p>
+            <p><strong>Can Speak:</strong> {{ l.Can_Speak }}</p>
+            <p><strong>Can Write:</strong> {{ l.Can_Write }}</p>
+            <br/>
+            </div>
+        {% endfor %}
+        <a href="{% url 'updatelang' p_data.id %}">Edit Language</a>
+    </div>
+
+    <h3>Work Experience:</h3>
+    <div style="margin: 30px; border:1px solid black;padding:10px">
+        {% for w in w_data %}
+            <p><strong>Title:</strong> {{ w.Title }}</p>
+            <p><strong>Project Name:</strong> {{ w.Project_name }}</p>
+            <p><strong>Company Name:</strong> {{ w.Company_name }}</p>
+            <p><strong>Technology:</strong> {{ w.Technology }}</p>
+            <p><strong>Start Date:</strong> {{ w.StartDate }}</p>
+            <p><strong>End Date:</strong> {{ w.EndDate }}</p>
+            <br/>
+        {% endfor %}
+        <a href="{% url 'updateWorkExp' p_data.id %}">Edit WorkExperience</a>
+    </div>
+
+    <div>
+        <h3>Skills</h3>
+        <div style="margin: 30px; border:1px solid black;padding:10px">
+        {% for s in s_data %}
+            <p><strong>Skill Name:</strong> {{ s.Skillname }}</p>
+            <p><strong>Proficiency:</strong> {{ s.Proficiency }}</p>
+            <p><strong>Years of Experience:</strong> {{ s.YearofExperiance }}</p>
+            <br/>
+            
+        {% endfor %}
+        <a href="{% url 'updateskill' p_data.id %}">Edit Skills</a><br/>
+        </div>
+    </div>
+{% endblock %}

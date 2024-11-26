@@ -1,0 +1,25 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+
+<h1>Homepage......!!!job_seeker</h1>
+<a href="{% url 'createprofile' %}">click</a> here to create profile....!!!
+<a href="{%url 'Viewprofile' %}">Viewprofile</a><br/>
+<a href="{%url 'appliedjobs' uid%}">Apliecations</a><br/>
+{% for job in somedata %}
+<div style="border: 1px solid black;margin: 5px;">
+<strong>Job Title:</strong> {{ job.title }}<br/>
+<strong>Description:</strong> {{ job.description }}<br/>
+<strong>Job Type:</strong> {{ job.job_type }}<br/>
+<strong>Minimum Salary:</strong> {{ job.salary_min }}<br/>
+<strong>Maximum Salary:</strong> {{ job.salary_max }}<br/>
+<strong>Location:</strong> {{ job.location }}<br/>
+<strong>Required Skills:</strong> {{ job.required_skills }}<br/>
+<strong>Years of Experience:</strong> {{ job.experience }}<br/><br/>
+<a href="{% url 'applicant' job.id uid  %}"> Apply</a>
+</div>
+{% endfor %}
+{% endblock %}

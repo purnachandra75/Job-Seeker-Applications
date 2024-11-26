@@ -1,0 +1,32 @@
+{% extends  'base.html' %}
+{%block title %}
+welcome
+{%endblock%}
+
+{% block content %}
+
+{% for s in s_data %}
+            <p><strong>Skill Name:</strong> {{ s.Skillname }}</p>
+            <p><strong>Proficiency:</strong> {{ s.Proficiency }}</p>
+            <p><strong>Years of Experience:</strong> {{ s.YearofExperiance }}</p>
+            <a href="{% url 'deleteskills' s.id %}">delete</a>
+            <a href="{% url 'updatenewskill' s.id s.User_id %}">update</a>
+{% endfor %}
+<a href="{% url 'addskills'  %}">add</a>
+{% if msg == 'update' %}
+<form method="post">
+    {% csrf_token %}
+    {{ form}}
+    <button>update</button>
+</form> 
+{% endif %}
+
+{% if msg == 'add' %}
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <button >add</button>
+</form>
+
+{% endif %}       
+{% endblock %}
